@@ -8,9 +8,20 @@
 #include <iostream>
 using namespace std;
 #include "comisaria.h"
-
+int max_patrullas = 10;
 int main() {
-	Comisaria comisaria  = Comisaria();
+
+	pthread_t hilosPatrulla[3];
+	for(int i=0; i<3;i++){
+	pthread_create(&hilosPatrulla[i],nullptr,Comisaria::atenderSituacion,nullptr);
+	}
+
+
+
+	pthread_join(hilosPatrulla[0],nullptr);
+	pthread_join(hilosPatrulla[1],nullptr);
+	pthread_join(hilosPatrulla[2],nullptr);
+
 
 	return 0;
 }
