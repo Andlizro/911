@@ -7,13 +7,10 @@
 
 #include <iostream>
 using namespace std;
-#include "oficial.h"
+#include "comisaria.h"
 
 int main() {
+	Comisaria comisaria  = Comisaria();
 
-	Oficial of = Oficial(1,1);
-	cout << "Tipo de oficial:" <<of.getTipoOficial() << endl;
-	cout << "Jornada:" << of.getJornada() << endl;
-	cout << "Arma: " << of.getArma() << endl;
 	return 0;
 }
