@@ -9,8 +9,6 @@
 #define COMISARIA_H_
 #include <pthread.h>
 #include <iostream>
-#include <vector>
-#include "oficial.h"
 #include <time.h>
 #include <windows.h>
 using namespace std;
@@ -18,23 +16,21 @@ using namespace std;
 pthread_mutex_t situacion = PTHREAD_MUTEX_INITIALIZER;
 
 int v_proceso, v_zona;
-string zonas[4] = { "zona_A", "zona_B", "zona_C", "zona_D" };
-int contzona[4] = { 0, 0, 0, 0 };
+string zonas[6] = { "zona A", "zona B", "zona C", "zona D", "zona E", "zona F" };
+int contzona[6] = { 0, 0, 0, 0, 0, 0,};
 int id_patrulla;
 class Comisaria {
 
 public:
-	int max_patrullas;
-	vector<pthread_t> hiloPatrullas;
-	vector<Oficial*> oficiales;
-	Comisaria(int);
+
 	static void* atenderSituacion(void* data) {
 
 		pthread_mutex_lock(&situacion);
 
 		srand(time(NULL));
-		v_zona = rand() % 4;
-		id_patrulla = rand() % 10;
+		v_zona = rand() % 6;
+		id_patrulla = 1+rand() % 10;
+		cout << "---------------------------------------------" << endl;
 		cout << "---------------------------------------------" << endl;
 		cout << "Patrulla  " << id_patrulla << " atendiendo situacion en "
 				<< zonas[v_zona] << endl;
@@ -45,29 +41,31 @@ public:
 				<< " minutos" << endl;
 		Sleep(1000);
 		v_proceso = rand() % 2; // Variable que indica las situaciones en las que puede caer una patrulla
-		cout << "v_proceso " << v_proceso << endl;
 		//Situacion en la que puede atrapar a un delicuente
 		if (v_proceso == 0) {
+			cout <<"Patrulla esta atrapando al delincuente " << endl; Sleep(1000);
 			if (rand() % 2 == 0) {
+				cout << "Patrulla atrapa al delincuente" << endl; Sleep(1000);
 				cout << "Patrulla lleva detenido hacia la comisaria" << endl;
 				Sleep(5000);
 				cout << "Patrulla " << id_patrulla << "  llego a la central"
-						<< endl;
+						<< endl; Sleep(1000);
 			} else {
-				cout << "La patrulla tuvo incidente en el camino" << endl;
+				cout << "Patrulla atrapa al delincuente" << endl; Sleep(1000);
+				cout << "La patrulla tuvo un incidente en el camino" << endl;
 				Sleep(5000);
 				cout << "Patrulla " << id_patrulla << "  llego a la central"
-						<< endl;
+						<< endl; Sleep(1000);
 			}
 		} else {
 			//Situacion en la que pide refuerzos
 			if (v_proceso == 1) {
-
+				cout << "Patrulla " << id_patrulla << "solicita refuerzos" << endl; Sleep(1000);
 				cout << "Salen refuerzos: " << rand() % 3 + 1
-						<< " patrullas van en camino" << endl;
+						<< " patrullas van en camino" << endl;Sleep(1000);
 
 				//Operacion aleatoria de a que refuerzo llamara si bombero o ambulancia
-				if (rand() % 3 == 0) {
+				if (rand() % 2+1 == 0) {
 					cout << "Hay heridos patrulla requiere ambulancia" << endl;
 					Sleep(1000);
 					cout << "Ambulancia va en camino... " << endl;
@@ -89,14 +87,14 @@ public:
 					Sleep(1000);
 					cout << "Ambulancia regresa a la central" << endl;
 					Sleep(1000);
-					cout << "Patrullas llegaron a comisaria" << endl;
+					cout << "Patrullas llegaron a comisaria" << endl; Sleep(1000);
 
 				} else {
-					if (rand() % 3 == 1) {
+					if (rand() % 2+1 == 1) {
 						cout
 								<< "Hay situacion critica patrulla requiere bomberos"
 								<< endl;
-						Sleep(500);
+						Sleep(1000);
 						cout << "Bomberos van en camino... " << endl;
 						Sleep(1000);
 						cout << "Bombero llego a " << zonas[v_zona] << endl;
@@ -109,7 +107,7 @@ public:
 						Sleep(1000);
 						cout << "Bomberos vuelven a central" << endl;
 					} else {
-						if (rand() % 3 == 2) {
+						if (rand() % 2+1 == 2) {
 							cout
 									<< "Las patrullas llegaron  a auxiliar patrulla  "
 									<< id_patrulla << endl;
@@ -117,11 +115,11 @@ public:
 							cout << "Patrullas atendiendo situacion " << endl;
 							Sleep(3000);
 							if (rand() % 2 == 0) {
-								cout << "Las patrullas encontraron al delincuente"
+								cout
+										<< "Las patrullas encontraron al delincuente"
 										<< endl;
 								Sleep(1000);
-								cout
-										<< "Las patrullas vuelven a comisaria"
+								cout << "Las patrullas vuelven a comisaria"
 										<< endl;
 
 							} else {
@@ -129,7 +127,7 @@ public:
 										<< endl;
 								Sleep(1000);
 								cout << "Los refuerzos vuelven a comisaria"
-										<< endl;
+										<< endl; Sleep(1000);
 							}
 
 						}
@@ -148,14 +146,14 @@ public:
 						Sleep(1000);
 						cout
 								<< "La patrulla vuelve a comisaria con el delicuente"
-								<< endl;
+								<< endl;Sleep(1000);
 
 					} else {
 						cout << "La patrulla no encontro al delincuente"
 								<< endl;
 						Sleep(1000);
-						cout << "La patrulla vuelve a comisaria" << endl;
-					}
+						cout << "La patrulla vuelve a comisaria" << endl; Sleep(1000);
+ 					}
 					contzona[v_zona]++;
 				}
 			}
@@ -174,14 +172,5 @@ public:
 		return nullptr;
 	}
 };
-
-// Constructor de la clase comisaria
-Comisaria::Comisaria(int max_patrulla) {
-	this->max_patrullas = max_patrulla;
-	for (int i = 0; i < max_patrulla; i++) {
-		Oficial * nuevoOficial = new Oficial(i, i);
-		this->oficiales.push_back(nuevoOficial);
-	}
-}
 
 #endif /* COMISARIA_H_ */
