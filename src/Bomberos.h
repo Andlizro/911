@@ -2,15 +2,10 @@
  * Bomberos.h
  *
  *  Created on: 21 ago. 2018
- *      Author: Usuario
+ *      Author: RLizardo
  */
 
-/*
- * Bomberos.h
- *
- *  Created on: 21 ago. 2018
- *      Author: Usuario
- */
+
 
 #ifndef BOMBEROS_H_
 #define BOMBEROS_H_

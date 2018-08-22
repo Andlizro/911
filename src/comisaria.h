@@ -2,7 +2,7 @@
  * comisaria.h
  *
  *  Created on: 14 ago. 2018
- *      Author: Usuario
+ *      Author: ABulnes
  */
 
 #ifndef COMISARIA_H_
@@ -47,21 +47,22 @@ public:
 				cout << "Patrulla atrapa al delincuente" << endl; Sleep(1000);
 				cout << "Patrulla lleva detenido hacia la comisaria" << endl;
 				Sleep(5000);
-				cout << "Patrulla " << id_patrulla << "  llego a la central"
-						<< endl; Sleep(1000);
+				cout << "Patrulla " << id_patrulla << "  llego a la central"<< endl; 
+				Sleep(1000);
 			} else {
 				cout << "Patrulla atrapa al delincuente" << endl; Sleep(1000);
 				cout << "La patrulla tuvo un incidente en el camino" << endl;
 				Sleep(5000);
-				cout << "Patrulla " << id_patrulla << "  llego a la central"
-						<< endl; Sleep(1000);
+				cout << "Patrulla " << id_patrulla << "  llego a la central" << endl; 
+				Sleep(1000);
 			}
 		} else {
 			//Situacion en la que pide refuerzos
 			if (v_proceso == 1) {
-				cout << "Patrulla " << id_patrulla << " solicita refuerzos" << endl; Sleep(1000);
-				cout << "Salen refuerzos: " << rand() % 3 + 1
-						<< " patrullas van en camino" << endl;Sleep(1000);
+				cout << "Patrulla " << id_patrulla << " solicita refuerzos" << endl; 
+				Sleep(1000);
+				cout << "Salen refuerzos: " << rand() % 3 + 1 << " patrullas van en camino" << endl;
+				Sleep(1000);
 
 				//Operacion aleatoria de a que refuerzo llamara si bombero o ambulancia
 				if (rand() % 2+1 == 0) {
@@ -76,23 +77,18 @@ public:
 					cout << "Policia patrullando zona..." << endl;
 					Sleep(1000);
 					Sleep(rand() % 4 + 1);
-					cout
-							<< "Se resolvio con los refuerzos, se capturo a los individuos"
-							<< endl;
+					cout << "Se resolvio con los refuerzos, se capturo a los individuos"	<< endl;
 					Sleep(1000);
-					cout
-							<< "Patrullas van en camino a comisaria, con los detenidos"
-							<< endl;
+					cout << "Patrullas van en camino a comisaria, con los detenidos"	<< endl;
 					Sleep(1000);
 					cout << "Ambulancia regresa a la central" << endl;
 					Sleep(1000);
-					cout << "Patrullas llegaron a comisaria" << endl; Sleep(1000);
+					cout << "Patrullas llegaron a comisaria" << endl; 
+					Sleep(1000);
 
 				} else {
 					if (rand() % 2+1 == 1) {
-						cout
-								<< "Hay situacion critica patrulla requiere bomberos"
-								<< endl;
+						cout << "Hay situacion critica patrulla requiere bomberos" << endl;
 						Sleep(1000);
 						cout << "Bomberos van en camino... " << endl;
 						Sleep(1000);
@@ -107,26 +103,20 @@ public:
 						cout << "Bomberos vuelven a central" << endl;
 					} else {
 						if (rand() % 2+1 == 2) {
-							cout
-									<< "Las patrullas llegaron  a auxiliar patrulla  "
-									<< id_patrulla << endl;
+							cout << "Las patrullas llegaron  a auxiliar patrulla  "<< id_patrulla << endl;
 							Sleep(500);
 							cout << "Patrullas atendiendo situacion " << endl;
 							Sleep(3000);
 							if (rand() % 2 == 0) {
-								cout
-										<< "Las patrullas encontraron al delincuente"
-										<< endl;
+								cout << "Las patrullas encontraron al delincuente" << endl;
 								Sleep(1000);
-								cout << "Las patrullas vuelven a comisaria"
-										<< endl;
+								cout << "Las patrullas vuelven a comisaria" << endl;
 
 							} else {
-								cout << "Las patrullas perdieron al delicuente"
-										<< endl;
+								cout << "Las patrullas perdieron al delicuente" << endl;
 								Sleep(1000);
-								cout << "Los refuerzos vuelven a comisaria"
-										<< endl; Sleep(1000);
+								cout << "Los refuerzos vuelven a comisaria" << endl; 
+								Sleep(1000);
 							}
 
 						}
@@ -134,24 +124,22 @@ public:
 				}
 
 			} else {
-				//Situacion en la que la situacion no se pudo solucionar
+				//Atencion  en la que la situacion no se pudo solucionar
 				if (v_proceso == 2) {
 					cout << "El delincuente escapo" << endl;
-					cout << "Patrulla " << id_patrulla << " patrullando la zona"
-							<< zonas[v_zona] << endl;
-					Sleep(500);
+					cout << "Patrulla " << id_patrulla << " patrullando la zona" << zonas[v_zona] << endl;
+					Sleep(1000);
 					if (rand() % 2 == 0) {
 						cout << "La patrulla encontro al delincuente" << endl;
 						Sleep(1000);
-						cout
-								<< "La patrulla vuelve a comisaria con el delicuente"
-								<< endl;Sleep(1000);
+						cout << "La patrulla vuelve a comisaria con el delicuente"<< endl;
+						Sleep(1000);
 
 					} else {
-						cout << "La patrulla no encontro al delincuente"
-								<< endl;
+						cout << "La patrulla no encontro al delincuente" << endl;
 						Sleep(1000);
-						cout << "La patrulla vuelve a comisaria" << endl; Sleep(1000);
+						cout << "La patrulla vuelve a comisaria" << endl; 
+						Sleep(1000);
  					}
 					contzona[v_zona]++;
 				}
@@ -160,8 +148,7 @@ public:
 		//Verificar las zonas conflictivas, en caso de ser mayor a 5 indica una zona con mucha incidencia
 		for (int i = 0; i < 4; i++) {
 			if (contzona[i] >= 5) {
-				cout << "Se han detectado muchos delitos en  " << zonas[i]
-						<< " enviando patrulla a resguardar " << endl;
+				cout << "Se han detectado muchos delitos en  " << zonas[i] << " enviando patrulla a resguardar " << endl;
 				contzona[i] = 0;
 			}
 		}

@@ -2,7 +2,7 @@
  * Hospital.h
  *
  *  Created on: 21 ago. 2018
- *      Author: Usuario
+ *      Author: RRodriguez
  */
 
 #ifndef HOSPITAL_H_
@@ -16,15 +16,11 @@ using namespace std;
 pthread_mutex_t situacion_medica = PTHREAD_MUTEX_INITIALIZER;
 int v_procesoM, id_ambulancia, v_ta, v_herida, v_accidente, v_enfermedad,v_golpe, v_ambulancia,v_quemadura,v_intox;
 string tipo_accidente[3] = { "Grave", "Muy grave", "Leve" };
-string heridas[6] = { "Fractura", "Quemadura", "Disparo",
-		"Accidente", "Intoxicacion","Enfermedad" };
+string heridas[6] = { "Fractura", "Quemadura", "Disparo", "Accidente", "Intoxicacion","Enfermedad" };
 string ambulancia[2] = { "UVI movil", "Ambulancia" };
-string c_accidente[4] = { "Choque", "Ebriedad", "Ir al volante con el telefono",
-		"Distraido" };
-string c_enfermedad[4] = { "Problemas con el higado", "Convulsiones",
-		"Malestar", "Problemas respiratorios" };
-string c_golpe[4] = { "Bajando las escaleras", "Caida de un edificio",
-		"Caida en bicicleta", "Caida por deslizon" };
+string c_accidente[4] = { "Choque", "Ebriedad", "Ir al volante con el telefono","Distraido" };
+string c_enfermedad[4] = { "Problemas con el higado", "Convulsiones","Malestar", "Problemas respiratorios" };
+string c_golpe[4] = { "Bajando las escaleras", "Caida de un edificio", "Caida en bicicleta", "Caida por deslizon" };
 string c_quemadura[3] = {"explosivos","fuego", "mal uso de la cocina"};
 string c_intoxicacion[4] = {"Comida vencida","Alcoholizacion", "Pesticidas","Productos Quimicos"};
 
