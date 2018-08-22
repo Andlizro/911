@@ -13,19 +13,16 @@ int max_patrullas = 10;
 int main() {
 
 	pthread_t hilosPatrulla[3];
-	for(int i=0; i<3;i++){
-	//Asi se realiza el llamado del hilo de hospital
-	pthread_create(&hilosPatrulla[i],nullptr,Hospital::atenderMedico,nullptr);
+	for (int i = 0; i < 3; i++) {
+		//Asi se realiza el llamado del hilo de hospital
+		//pthread_create(&hilosPatrulla[i],nullptr,Hospital::atenderMedico,nullptr);
+		//Asi se realiza el llamado del hilo de comisaria
+		pthread_create(&hilosPatrulla[i], nullptr,Comisaria::atenderSituacion, nullptr);
 	}
 
-	//Asi se realiza el llamado del hilo de comisaria
-	//pthread_create(&hilosPatrulla[i], nullptr, ,Comisaria::atenderSituacion, nullptr);
-
-
-	pthread_join(hilosPatrulla[0],nullptr);
-	pthread_join(hilosPatrulla[1],nullptr);
-	pthread_join(hilosPatrulla[2],nullptr);
-
+	pthread_join(hilosPatrulla[0], nullptr);
+	pthread_join(hilosPatrulla[1], nullptr);
+	pthread_join(hilosPatrulla[2], nullptr);
 
 	return 0;
 }

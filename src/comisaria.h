@@ -31,7 +31,6 @@ public:
 		v_zona = rand() % 6;
 		id_patrulla = 1+rand() % 10;
 		cout << "---------------------------------------------" << endl;
-		cout << "---------------------------------------------" << endl;
 		cout << "Patrulla  " << id_patrulla << " atendiendo situacion en "
 				<< zonas[v_zona] << endl;
 		cout << "---------------------------------------------" << endl;
@@ -39,7 +38,7 @@ public:
 		contzona[v_zona]++; // Aumenta el contador de zona
 		cout << "Patrulla en camino: estimando llegada " << rand() % 30 + 10
 				<< " minutos" << endl;
-		Sleep(1000);
+		Sleep(5000);
 		v_proceso = rand() % 2; // Variable que indica las situaciones en las que puede caer una patrulla
 		//Situacion en la que puede atrapar a un delicuente
 		if (v_proceso == 0) {
@@ -60,7 +59,7 @@ public:
 		} else {
 			//Situacion en la que pide refuerzos
 			if (v_proceso == 1) {
-				cout << "Patrulla " << id_patrulla << "solicita refuerzos" << endl; Sleep(1000);
+				cout << "Patrulla " << id_patrulla << " solicita refuerzos" << endl; Sleep(1000);
 				cout << "Salen refuerzos: " << rand() % 3 + 1
 						<< " patrullas van en camino" << endl;Sleep(1000);
 
@@ -138,7 +137,7 @@ public:
 				//Situacion en la que la situacion no se pudo solucionar
 				if (v_proceso == 2) {
 					cout << "El delincuente escapo" << endl;
-					cout << "Patrulla" << id_patrulla << " patrullando la zona"
+					cout << "Patrulla " << id_patrulla << " patrullando la zona"
 							<< zonas[v_zona] << endl;
 					Sleep(500);
 					if (rand() % 2 == 0) {
