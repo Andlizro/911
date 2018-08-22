@@ -6,12 +6,18 @@
 //============================================================================
 
 #include <iostream>
+#include <time.h>
+#include <windows.h>
 using namespace std;
 #include "comisaria.h"
 #include "Hospital.h"
 int max_patrullas = 10;
 int main() {
-
+	
+	int njor;
+	string jor[4]={"Matutina","Vespertina","Nocturna","Madrugada"};
+	njor = rand() % 4;
+	cout << "Se esta trabajando en jornada: "<<jor[njor];
 	pthread_t hilosPatrulla[3];
 	for (int i = 0; i < 3; i++) {
 		//Asi se realiza el llamado del hilo de hospital
